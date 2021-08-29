@@ -12,27 +12,33 @@
             align-items: center;
             flex-direction: column;
         }
+
         .outer{
             width: 80%;
             height: 500px;
             background: black;
             display: flex;
             padding: 10px;
-            overflow: hidden;
+            /* overflow: hidden; */
+            position: relative;
+            
         }
 
         .outer div{
             width: 100%;
             height: 100%;
-            overflow: hidden;
             display: flex;
+            position: relative;
         }
+
         .inner{
             width: 20%;
+            align-self: flex-end;
         }
+
         .animation{
             animation-duration: 3s;
-            animation-play-state: unset;
+            animation-play-state: running;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
@@ -41,81 +47,87 @@
             background: blueviolet;
             animation-name: sliding-vertically-a;
         }
+
         #b{
             background: rgb(43, 226, 98);
             animation-name: sliding-vertically-b;
         }
+
         #c{
             background: rgb(195, 43, 226);
             animation-name: sliding-vertically-c;
         }
+
         #d{
             background: rgb(194, 94, 119);
             animation-name: sliding-vertically-d;
         }
+
         #e{
             background: yellow;
             animation-name: sliding-vertically-e;
         }
 
-        
         @keyframes sliding-vertically-a {
             0% {
-                margin-top: 0%;
+                height: 0%;
             }
             50%{
-                margin-top: 45%;
+                height: 45%;
             }
             100% {
-                margin-top: 50;
+                height: 100%;
             }
         }
 
         @keyframes sliding-vertically-b {
             0% {
-                margin-top: 50%;
+                height: 2%;
             }
             50%{
-                margin-top: 30%;
+                height: 60%;
             }
             100% {
-                margin-top: 5%;
+                height: 80%;
             }
         }
         @keyframes sliding-vertically-c {
             0% {
-                margin-top: 40%;
+                height: 10%;
             }
             25%{
-                margin-top: 20%;
+                height: 50%;
             }
             50%{
-                margin-top: 30%;
+                height: 25%;
             }
             100%{
-                margin-top: 10%;
+                height: 100%;
             }
         }
         @keyframes sliding-vertically-d {
             0% {
-                margin-top: 50%;
+                height: 8%;
             }
-            50%{
-                margin-top: 15%;
+            25%{
+                height: 30%;
             }
-            100% {
-                margin-top: 2%;
+            100%{
+                height: 100%;
             }
         }
         @keyframes sliding-vertically-e {
             0% {
-                margin-top: 47%;
+                height: 15%;
+            }
+            25%{
+                height: 60%;
             }
             50%{
-                margin-top: 30;
+                height: 30%;
             }
-            100% {
-                margin-top: 8%;
+            100%{
+                height: 100%;
             }
         }
 
@@ -126,6 +138,19 @@
             justify-content: space-around;
         }
         
+        button{
+            border: none;
+            color: white;
+            padding: 8px 15px;
+        }
+
+        #start{
+            background: green;
+        }
+
+        #stop{
+            background: red;
+        }
     </style>
 </head>
 <body>
@@ -153,9 +178,8 @@
     startButton.addEventListener('click', (e)=>{
         // start animation
         for (var i=0; i<innerDivs.length; i++) {
-            
             innerDivs.item(i).classList.add("animation")
-            
+            innerDivs.item(i).style.animationPlayState = "running";
         }
     })
 
